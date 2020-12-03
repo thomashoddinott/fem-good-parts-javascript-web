@@ -138,7 +138,131 @@ Bugs are inevitable. Your goals is to do what you can to write less of them.
 
 ---
 
-https://frontendmasters.com/courses/good-parts-javascript-web/history-of-javascript/
+Netscape wanted a language for their browser, Navigator. That produced **LiveScript**, inspired by Java, Scheme and Self (without classes).
+
+**Origin of JavaScript:**
+
+Sun wanted to be free from Microsoft, so they designed Java to target the Java Virtual Machine, rather than the OS.
+
+Similarly, Netscape wanted to be free from Microsoft, so they wanted a language that targeted the Browser.
+
+Nov 1995 - https://www.cnet.com/news/netscape-and-sun-unveil-javascript/
+
+Sun dropped HotJava, a competing browser
+
+But Netscape wouldn't let go of LiveScript because they wanted an language for beginners, so instead they changed its name to **JavaScript** and claimed it was sister language--which it is not.
+
+Microsoft completely missed the Web, they had gambled on Fax and Cable TV, so in a rush they bought Spyglass (Internet Explorer) and after reverse engineering JS (and recording all its flaws) its own language **JScript**.
+
+Netscape is worried, because Microsoft is going to extend JavaScript. They went to W3C in an attempt to create a standard. That failed, and they went to ECMA, and they said Yes, making use of all Microsoft has discovered when reverse engineering JS. This language was called... **ECMAScript** - **ES3, ES5, ES6** etc.
+
+https://codeburst.io/javascript-wtf-is-es6-es8-es-2017-ecmascript-dca859e4821c
+
+Where do Bad Parts come from?
+
+- Legacy - things we got wrong a long time ago and still exist in several languages.
+- Good Intentions - stuff we thought would make our lives easier, but didn't.
+- Haste - created in 10days! Netscape shipped an experiment.
+
+Fortunately, for the most part we can ignore the bad parts. The ones we can't are dangerous. 
+
+---
+
+JS is OO, but in JS an object `{}` is a dynamic collection of properties. This is a `dict` in Python, for example.
+
+JS coerces keys to strings. 
+
+Object literals are the inspiration for JSON - the world's most popular data exchange format.
+
+Objects have inheritance:
+
+```javascript
+> var mother = {
+... a: 1,
+... b: 2
+... };
+undefined
+> mother
+{ a: 1, b: 2 }
+> var daughter = Object.create(mother)
+undefined
+> daughter
+{}
+> daughter.b += 2;
+4
+> daughter
+{ b: 4 }
+> daughter.a += 1;
+2
+> daughter
+{ b: 4, a: 2 }
+> daughter.c = 9
+9
+> daughter
+{ b: 4, a: 2, c: 9 }
+```
+
+---
+
+Everything in JS is an **Object**.
+
+Decimal fractions are approximate:
+
+```javascript
+> 0.1 + 0.2 === 0.3
+false
+```
+
+Numbers have methods: `toExponential, toFixed, ...`
+
+```javascript
+> a = 0.1
+0.1
+> a.toExponential()
+'1e-1'
+```
+
+Every number inherits from `Number.prototype`
+
+We also have the `Math` object:
+
+```javascript
+> Math.sqrt(a)
+0.31622776601683794
+> Math.PI
+3.141592653589793
+```
+
+**NaN** - confusing!
+
+`typeof(NaN) === 'number'` is false
+
+`NaN === NaN` is false
+
+`NaN !== NaN` is true
+
+`isNaN(NaN) is true`
+
+---
+
+**Why is String called String? **- No one really knows! Can't find an origin in the literature.
+
+`""` and `''` are interchangeable, Douglas recommends:
+
+- use `""` for external strings (urls, notes to user, etc.) 
+- use `''` for internal strings (properties, character constants, etc.)
+
+Strings have loads of methods.
+
+https://frontendmasters.com/courses/good-parts-javascript-web/arrays/
+
+
+
+
+
+
+
+
 
 
 
