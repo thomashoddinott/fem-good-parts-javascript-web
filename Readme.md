@@ -256,13 +256,141 @@ Strings have loads of methods.
 
 https://frontendmasters.com/courses/good-parts-javascript-web/arrays/
 
+---
 
+**Arrays**
 
+Array inherits from Object (pure array type doesn't exist)
 
+Arrays have many methods
 
+`.sort()`
 
+```javascript
+> var l = [8,15,4,23,42,1]
+undefined
+> l.sort()
+[ 1, 15, 23, 4, 42, 8 ]
+// oh, shit
+```
 
+^ it's sorting them as strings...
 
+^^ You can override this default behaviour, but it's stupid by default.
+
+`.splice()`
+
+```javascript
+[ 'a', 'b', 'c', 'd' ]
+> delete m[1]
+true
+> m
+[ 'a', <1 empty item>, 'c', 'd' ]
+> m.length
+4
+//^ delete doesn't do what we expect it to
+> m.splice(1,1)
+[ <1 empty item> ]
+> m
+[ 'a', 'c', 'd' ]
+```
+
+**Arrays vs Objects**
+
+- objects when names are arbitrary strings: `o['foo']`
+- arrays when names are sequential integers: `a[0]` 
+
+---
+
+RegEx is hard to decipher. 
+
+Use https://jex.im/regulex/ for assistance.
+
+All values are objects, except `null` and `undefinied` -- so called bottom cases. 
+
+In your own coding, use `undefined`. That's what JS uses by default. 
+
+Use `Array.isArray()` to test type. `typeof(array) = object` :/ 
+
+JS is loosely typed. 
+
+Strong typing is a strong force at the moment. It finds errors at compile time that you can't find without it.
+
+- TypeScript, etc.
+
+But, "Type systems don't help you find the bugs that keep you up at night." **???**
+
+And, you save a lot of time working against the type system!
+
+^ DC is against strong typing in JS.
+
+---
+
+JS syntactically similar to C
+
+`+` does both addition and concatenation. A bad idea in a loosely typed language. It can lead to bugs.
+
+`+"42" = 42` - coerces str to number
+
+---
+
+`For` largely replaced by `map` and `ForEach`
+
+---
+
+All you need is Functions in JS. They make up a lot of the good parts!
+
+A `function` produces an instance of a function object. Inherits from `Function.prototype`
+
+Function objects are first class
+
+- may be passed as an arg to a function
+- may be returned from a function
+- may be assigned to a variable
+- may be stored in an object or array
+
+**Scope**
+
+![scope](img/scope.png)
+
+**This**
+
+![image-20201203135928669](img/image-20201203135928669.png)
+
+Recursion supported by JS
+
+--> seen in quick sort
+
+---
+
+**Closure** aka Lexical Scoping/Static Scoping
+
+- The context of an inner fn includes the scope of the outer fn
+- An inner fn enjoys that context even after the parent functions have returned
+
+Fn scope works like block scope:
+
+![image-20201203142044783](img/image-20201203142044783.png)
+
+^ This is known as **closure**
+
+We get over the problem of not having `a` when we want to call `yellow()` by "allocating memory to the *heap* instead of the the _stack_ and using a good garbage collector." -- First implemented in ... JS!
+
+example:
+
+ ```javascript
+var digit_name = (function () {
+	var names = ['zero', 'one', 'two', 'three',
+				 'four', 'five', 'six','seven',
+				 'eight', 'nine'];
+	return function (n) {
+		return names[n];
+	}
+}());
+console.log(digit_name(7)) // 'seven'
+ ```
+
+https://frontendmasters.com/courses/good-parts-javascript-web/pseudoclassical-inheritance/
 
 
 
