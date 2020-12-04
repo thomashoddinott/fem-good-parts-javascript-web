@@ -392,11 +392,112 @@ console.log(digit_name(7)) // 'seven'
 
 https://frontendmasters.com/courses/good-parts-javascript-web/pseudoclassical-inheritance/
 
+---
 
+**Skipping section on Pseudoclassical Inheritance, Functional Inheritance, Constructors**
 
+https://www.w3schools.com/js/js_object_constructors.asp
 
+---
 
+**Ajax - Asynchronous JS and XML** - https://www.youtube.com/watch?v=RDo3hBL1rfA
 
+^ Instead of sending entire web pages when you need something back from the server, we send individual snippets of what we need with Ajax.
 
+![How to Return AJAX Response from Asynchronous JavaScript Call: Methods and  Code Examples – Stackify](img/how-ajax-works-chart-12821.png)
 
+The web comes from typesetting and word processing.
 
+Started with GML:
+
+![image-20201204122242193](img/image-20201204122242193.png)
+
+^ starting to look like ... html
+
+Inspired by Scribe:
+
+![image-20201204122435360](img/image-20201204122435360.png)
+
+^ which brought us attributes 
+
+![image-20201204122711489](img/image-20201204122711489.png)
+
+---
+
+**HTML** was intended for document viewers originally. It wasn't well suited to the web. We used it anyway.
+
+pros:
+
+- huge improvement over SGML
+- much simpler (usually good)
+- more resilient - actually not good? - we heroically try to render what we can instead of failing entirely - this generated security conflicts
+
+cons:
+
+- can't predict final presentation on client 
+- too limited - classitis and iditis
+- it did not anticipate applications beyond simple document retrieval
+
+HTML also has a mix of nested `<ol><li>` and not nested `<h1><h2>` forms.
+
+A web page isn't a page... it's a scroll - we invented pages after scrolls!
+
+**XML** was meant to replace HTML for web pages and it was meant to be an exchange language like JSON. It failed at both.
+
+**CSS** - oh boy!
+
+- Lack of modularity
+- Selector management is complicated
+- Declarations are too weak for modern web apps
+- Not intended for dynamic content
+- It is unimplementable. It's all about the quirks.
+
+**The reason the web didn't die was because of ... JS!**
+
+The **DOM** - "one of the worst APIs ever invented"
+
+- It is what most people hate when they say they hate JS
+- The browser's API
+
+---
+
+**The Browser**
+
+![image-20201204143537567](img/image-20201204143537567.png)
+
+**Mosaic + Godzilla = Mozilla!**
+
+Mozilla was better than Mosaic at handling images, so it became popular.
+
+---
+
+Where do you put JavaScript in a text format?
+
+==> `<script></script> ` 
+
+**document.write**
+
+- allows JS to produce HTML text
+- before onload - inserts HTML text into document
+- after onload - uses HTML text to replace the current document
+- not recommended! - used maliciously 
+
+**`<script></script>`**
+
+- place tags as close to the bottom of the body as possible. Also place css `<link>` as high in the head as possible
+- minify and gzip script files
+- reduce number of script files as much as possible
+
+---
+
+**Document Tree Structure**
+
+![image-20201204145746401](img/image-20201204145746401.png)
+
+DOM still uses uppercase (old HTML convention)
+
+`document` is a global variable in the browser
+
+---
+
+https://frontendmasters.com/courses/good-parts-javascript-web/retrieving-nodes/
