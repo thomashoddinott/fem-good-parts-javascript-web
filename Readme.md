@@ -1,7 +1,5 @@
 # The Good Parts of JS - Douglas Crockford
 
-- remove h3s?
-
 ### Glossary
 
 - JS - JavaScript 
@@ -500,4 +498,122 @@ DOM still uses uppercase (old HTML convention)
 
 ---
 
-https://frontendmasters.com/courses/good-parts-javascript-web/retrieving-nodes/
+**Retrieving Nodes**
+
+`document.getElementById(id)`
+
+`document.getElementByName(name)`
+
+`node.getElementsByTagName(tagName)`
+
+Once you have access to a node you can manipulate it.
+
+e.g. `<img>`
+
+- align, alt, border, height...
+
+Browsers have additional properties specific to each browser. It's a trap. Stay away from them.
+
+**Style Names**
+
+CSS and DOM designed around the same time.
+
+| CSS              | DOM             |
+| ---------------- | --------------- |
+| background-color | backgroundColor |
+| border-radius    | borderRadius    |
+| font-size        | fontSize        |
+| list-style-type  | listStyleType   |
+
+etc... 
+
+CSS `-` minus signs are intepreted as `minus`, so that was a bad call. DOM could have helped out by replacing `-` with `_`, or something else. Instead they wrote properties in camelCase, making switching between CSS and DOM a pain.
+
+Don't mess with the DOM, write good HTML. 
+
+---
+
+**Events**
+
+- The browser has an event-driven, signle-threaded programming model
+- Events are targeted to particular nodes
+- Events cause the invocation of event handler functions
+
+**Mouse Events**
+
+The target is the topmost (z-index) node containing the cursor
+
+- click, dblclick, mousedown, mousemove, etc.
+
+**Input Events**
+
+The target is the node having _focus_
+
+- blur, change, focus, keydown, keypress, etc.
+
+**Trickling & Bubbling**
+
+Trickling - start from the top, stop when a node says "I can handle this". **Avoid this.**
+
+Bubbling - start at the target, then move to its parent, and so on, until the event is cancelled. **Designed by Microsoft - the right way**
+
+**WC3 decided to allow both ways**
+
+---
+
+**Performance**
+
+In most applications, JS has a small cost. Everything else: touching a node; styling; reflow; repaint; and random things like nodelist can have a big cost.
+
+**Performance Tools**
+
+- Speed Tracer for Chrome
+
+---
+
+A small amount of JS makes the DOM (one of the world's worst APIs) into something pleasant and productive. 
+
+JS libs:
+
+- Portability (browsers are inconsistent)
+- Error correction
+- Model
+- Widget
+
+**Any library is better than the DOM** 
+
+Ajax, JQuery, etc...
+
+---
+
+**Division of Labour**
+
+How to split the work between the server and the client?
+
+Originally, servers were king, browser is a terminal - too much demand on server
+
+Then, swung to client doing everything - too slow to send over the web (?)
+
+Solution: Seek the Middle Way
+
+- A pleasant dialogue between specialised peers
+- Minimise the volume of traffic
+
+---
+
+![image-20201207121520674](img/image-20201207121520674.png)
+
+---
+
+JS is open (exposed) because its creator expected people down the line would need to patch it ==> poly-filling, monkey-patching.
+
+---
+
+**skipped meta-object API**
+
+---
+
+**Strict Mode**
+
+https://frontendmasters.com/courses/good-parts-javascript-web/strict-mode/
+
