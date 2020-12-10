@@ -615,5 +615,201 @@ JS is open (exposed) because its creator expected people down the line would nee
 
 **Strict Mode**
 
-https://frontendmasters.com/courses/good-parts-javascript-web/strict-mode/
+Introduced in ES5
+
+1. Eliminates some JavaScript silent errors by changing them to throw errors.
+2. Fixes mistakes that make it difficult for JavaScript engines to perform optimizations: strict mode code can sometimes be made to run faster than identical code that's not strict mode.
+3. Prohibits some syntax likely to be defined in future versions of ECMAScript.
+
+---
+
+**skipped coding challenge section**
+
+---
+
+**The History of Security**
+
+*White hats vs black hats*
+
+Security is not about hats
+
+Security is everyone's job. Don't leave it to specialists.
+
+Security is a massive topic. Too much to cover if you have a day job.
+
+Deterrence is not effective - you can't punish an invisible attacker. Prevention is the only effective mechanism.
+
+---
+
+**Auguste Kerckhoffs**
+
+_La Cryptographie Militaire 1883_ - first modern book on cryptography 
+
+**Kerckhoffs Principle: The design of a system should not require secrecy; and compromise of the system should not inconvenience the correspondents.**
+
+e.g. 
+
+![image-20201209111457114](img/image-20201209111457114.png)
+
+There are no 'secrets' designed into this encryption machine. The only secret is the key.
+
+The machine is Open. Everyone can see how it works. 
+
+There is no security in obscurity.
+
+Just worry about keeping the 'keys' safe, which is hard enough!
+
+---
+
+One Time Pad - the only truly unbreakable (unbruteforceable) system
+
+- the key must always remain secret
+- the key must be at least as long as long as the plain text
+- the cypher text is obtained by `XOR` of the plain text and the key
+- the key must be perfectly random - cryptographically random 
+
+![image-20201209112052556](img/image-20201209112052556.png)
+
+^ the original logo leaks through the key
+
+- A key must never be used more than once
+
+**Cryptography is not security** 
+
+Characters we like to use in thinking about cryptography: 
+
+- Alice & Bob
+- Eve - Eavesdropper (packet sniffing, etc.)
+- Mallory - Man In The Middle (giving your credentials to fake server)
+- Satan - Totally malicious. Very rich, smart and determined. Blacklisting doesn't work - you create a new ID. Whitelist doesn't work either. Solution?  Accept Satan will connect and will do whatever we allow him to do to us and our customers. Therefore we have the responsibility to do everything right, so that Satan's capabilities are limited so he can't cause harm.
+
+**Therefore: Security must be factored into every decision**
+
+Red flag : "We'll go back and make it secure later" - Security is hard to retrofit
+
+---
+
+**Security and the Browser**
+
+- horribly insecure
+- still "fixing it later"
+- HTML5 made it worse instead of better
+
+Yet it is still better than everything else.
+
+the Web does not blame the victim - :heavy_check_mark:
+
+The browser represents a site, not the user. :heavy_check_mark:
+
+What the web got wrong:
+
+- There can be more interests involved than the user's and the site's
+- A malicious party can exploit coding conventions t inject malicious code - that malicious code gets all the rights of the site
+- This is known as the XSS problem
+
+Once a script gets in, it can request additional scripts from any server in the world. Browsers protect against this by restricting the origin of scripts.
+
+Your server cannot detect that the request did not originate with your app.
+
+If your server accepts SQL, they can access your DB.
+
+An attacker has control over the display and can request information from the user - phishing attacks
+
+Sites block this by requesting your password when dangerous stuff is going on - except when the attacker can ask YOU for your password first
+
+The Origin Policy is one way. The Attacker can send data to wherever.
+
+^
+
+The browser does not prevent any of these.
+
+Web standards require these weaknesses.
+
+---
+
+^ This is called **XSS** (CSS was taken)
+
+Suggests there's something wrong with **Cross Side Scripting**, but that's wrong! We want sites to communicate with each other.
+
+Also, you don't need a second site to do XSS, so the name is just wrong.
+
+Invented in 1995 since JS was released. 
+
+**A mashup** is a self-inflicted XSS attack.
+
+Advertising is a mashup.
+
+"The most reliable, cost effect method to inject evil code is to buy an ad."
+
+Why is there XSS?
+
+- The web stack is too complicated - too many languages - each can be nested inside of each other 
+- browsers do heroic things to make sense of malformed content
+- Template-based web frameworks are optimised for XSS injection
+- JS global objects give every scrap of script the same set of powerful capabilities
+
+As bad as it is at security, the browser is a vast improvement over everything else.
+
+The browser didn't anticipate interests other than the user and the site:
+
+- an ad or a widget or an Ajax library gets the same rights as the site's own scripts
+
+JS got close to getting it right - it can be fixed some more
+
+HTML - no hope
+
+^ Therefore, this isn't going to be fixed easily
+
+It's up to devs to create secure applications on an insecure platform
+
+---
+
+The Principle of Least Authority: Any unit of software should be given just the *capabilities* it needs to do its work, and no more.
+
+![img](img/img006.JPG)
+
+^ Corrupting a single object results in a corrupted object, not a corrupted system
+
+[The Lazy Programmer's Guide to Secure Computing - Marc Stiegler](https://www.youtube.com/watch?v=eL5o4PFuxTY)
+
+Confusion aids the enemy. Bugs are a manifestation of confusion. We think the system works one way, but the attacker knows how it actually works. This is why we ship bugs to production all the time.
+
+With great complexity comes great confusion. Keep it simple. Keep it clean.
+
+**Code Well**
+
+- Good code is ultimately cheaper to produce than bad code, so might as well always write good code.
+- Good code is easier to reason about.
+- Code that is difficult to reason about it more likely to be problematic.
+- Strict conformance to good style rules.
+- Use a Linter 
+
+---
+
+**A Simple Attack**
+
+user clicks on: `http://yoursite.com/<script>...</script>`
+
+```html
+<html>
+    <body>
+        <p>404 File not found:
+            <script>...</script>
+            //I can now run, thanks!
+            //give me your password, etc.
+        </p>
+    </body>
+</html>
+```
+
+- the script runs with the authority of your site
+- the script gets cookies, local storage, everything
+
+---
+
+https://frontendmasters.com/courses/good-parts-javascript-web/synchronous-functions/
+
+
+
+
 
