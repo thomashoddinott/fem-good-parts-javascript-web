@@ -807,7 +807,110 @@ user clicks on: `http://yoursite.com/<script>...</script>`
 
 ---
 
-https://frontendmasters.com/courses/good-parts-javascript-web/synchronous-functions/
+**Synchronous Functions**
+
+- does not return until the work is complete, or something fails --> easy to reason about its behaviour over time
+
+**Threading**
+
+| Pros                                                     | Cons                                                 |
+| -------------------------------------------------------- | ---------------------------------------------------- |
+| no rethinking is necessary                               | stack memory per thread                              |
+| blocking programs are ok                                 | if 2 threads use the same memory, a _race_ may occur |
+| execution continues as long as any thread is not blocked |                                                      |
+
+**Threads will never (???) be introduced to JS.**
+
+e.g.
+
+thread1: `my_array[my_array.length] = 'a';`
+
+thread2: `my_array[my_array.length] = 'b';`
+
+Potentialities: 
+
+- `['a', 'b']`
+- `['b', 'a']`
+- `['a']`
+- `['b']`
+
+^ We don't know how the code will run - we can't see the compiled machine code and how it interweaves and what errors that can cause.
+
+**Mutual Exclusion**
+
+Allow one thread to perform critical stuff in memory at a time. All other threads are block.
+
+If threads don't interact, they can run individually across available cores.
+
+---
+
+**Asynchronous Functions**
+
+Returns immediately
+
+==> Success or failure will be determined somehow in the future
+
+Used in **Turn** Systems
+
+- Turn started by an external event, such as a message delivered, completion of async request, user action, or a clock tick
+- Callback fn associated with event is called. It runs to completion. When it returns, the turn ends
+- No need for threads. No races. No deadlocks.
+
+**The Law of Turns:**
+
+- Never block
+- Never wait
+- Finish fast
+
+**Event Loops**
+
+| Pros                                                         | Cons                      |
+| ------------------------------------------------------------ | ------------------------- |
+| Free of races and deadlocks                                  | Programs must never block |
+| Only one stack - efficient                                   | Turns must finish quickly |
+| Very low overhead                                            | Programs are inside out!  |
+| Resilient. If a turn fails, the program can still go on. Just open a debugger and go surf the web. |                           |
+
+---
+
+**JS is moving to the server** after having already conquered the browser.
+
+What servers do is quite different from what browsers do.
+
+==> **node.js**
+
+- implements a web server is a JS event loop
+
+---
+
+**Functional Programming** to the rescue.
+
+Contains the solutions to what we want to do on the server.
+
+- Futures: Dataflow and LISP
+- Promise
+- Monads
+- Arrows
+- RX
+- FRP: Flapjax, bacon.js, elm.
+
+**RQ** - JS lib for managing asynchronicity in server apps
+
+---
+
+**Testing** in asynchronous systems is tricky
+
+He wrote a testing library which is similar to Haskell's QuickCheck: https://www.crockford.com/jscheck.html
+
+Haskell has type inference - :open_mouth:
+
+---
+
+"You know how people who do a lot of Functional Programming act like they are smarter than you are?" :laughing: --> They're not, but they are working with **closure** and **continuation** a lot.
+
+---
+
+**Skipped final section**
 
 
 
