@@ -1,11 +1,65 @@
 # The Good Parts of JS - Douglas Crockford
 
-### Glossary
+My notes from the FEM course.
+
+## Contents
+
+- [The Good Parts of JS - Douglas Crockford](#the-good-parts-of-js---douglas-crockford)
+  - [Contents](#contents)
+  - [Glossary](#glossary)
+    - [Two Systems](#two-systems)
+    - [Visual Processing](#visual-processing)
+    - [JavaScript: Good Parts & Bad Parts](#javascript-good-parts--bad-parts)
+    - [Programming Style](#programming-style)
+    - [Composition](#composition)
+    - [Scope](#scope)
+    - [Bad Style](#bad-style)
+    - [Code Written for Performance](#code-written-for-performance)
+  - [And Then There Was JavaScript](#and-then-there-was-javascript)
+    - [History of JavaScript](#history-of-javascript)
+    - [Objects](#objects)
+    - [Numbers](#numbers)
+    - [Booleans and Strings](#booleans-and-strings)
+    - [Arrays](#arrays)
+    - [Dates, RegEx & Types](#dates-regex--types)
+    - [JavaScript Syntax](#javascript-syntax)
+    - [Statements](#statements)
+  - [Function the Ultimate](#function-the-ultimate)
+    - [Funtions](#funtions)
+    - [Closure](#closure)
+    - [The Metamorphosis of Ajax](#the-metamorphosis-of-ajax)
+    - [The History of HTML](#the-history-of-html)
+    - [How JavaScript Saved HTML](#how-javascript-saved-html)
+    - [The Browser](#the-browser)
+    - [The Script Tag](#the-script-tag)
+    - [Document Tree Structure](#document-tree-structure)
+    - [Retrieving Nodes](#retrieving-nodes)
+    - [Events](#events)
+    - [DOM Performance](#dom-performance)
+    - [Division of Labour](#division-of-labour)
+  - [ES5: The New Parts](#es5-the-new-parts)
+    - [New Syntax](#new-syntax)
+    - [New Methods](#new-methods)
+    - [Strict Mode](#strict-mode)
+  - [Principles of Security](#principles-of-security)
+    - [The History of Security](#the-history-of-security)
+    - [Cryptography](#cryptography)
+    - [Security and the Browser](#security-and-the-browser)
+    - [Cross Site Scripting](#cross-site-scripting)
+    - [Object Capabilities](#object-capabilities)
+    - [A Simple Attack](#a-simple-attack)
+  - [Managing Asynschronicity](#managing-asynschronicity)
+    - [Synchronous Functions](#synchronous-functions)
+    - [Asynchronous Functions](#asynchronous-functions)
+    - [JavaScript on the Server](#javascript-on-the-server)
+    - [Functional Programming](#functional-programming)
+
+## Glossary
 
 - JS - JavaScript 
 - PL - Programming Language
 
----
+### Two Systems
 
 JS is now, unexpectedly, the most important programming language in the world.
 
@@ -20,7 +74,7 @@ We *think* with two systems:
 
 Oftentimes you can hear both of them working at the same time, e.g. when you need to make a difficult decision. 
 
----
+### Visual Processing
 
 Advertising has known how to bypass the brain and influence the gut for decades.
 
@@ -30,7 +84,7 @@ We can't write perfect programs. It would take too long, and we can't test them 
 
 Our brains haven't evolved since the last Ice Age. We are still Hunter Gatherers. There's nothing in our evolution that primes us for programming. We use both systems (1, 2), but we don't know *how* we do it. 
 
----
+### JavaScript: Good Parts & Bad Parts
 
 JS has some of the best parts ever put into any programming language; JS also famously has more bad parts than ever other programming language. Ever language is like this. However, JS has a lot of extreme goodness and badness at each end!
 
@@ -46,7 +100,7 @@ JS was designed as a language for beginners. But, it looks like C, which is hard
 
 **Prefer forms that are error resistant**
 
----
+### Programming Style
 
 Although we've agreed that `Goto` is a bad idea, it survives in modern PLs in the `switch` statement: The fallthrough hazard.
 
@@ -60,7 +114,7 @@ The introduction of Christianity brought the need for punctuation, upper/lower c
 
 Programs must communicate clearly to people. 
 
----
+### Composition
 
 **Use elements of good composition where applicable.** Where applicable = unless there is a clear trade-off for not doing so ... ?
 
@@ -71,9 +125,7 @@ Programs must communicate clearly to people.
 
 **Avoid forms that are difficult to distinguish from common errors**
 
----
-
-**Scope**
+### Scope
 
 Block scope vs. function scope
 
@@ -98,23 +150,19 @@ https://www.w3schools.com/js/js_es6.asp
 
 As processes become more 'agile', coding must be more resilient.
 
----
+### Bad Style
 
 `++` operator used to be used for pointer arithmetic. Now we've determined that's a bad idea, yet we still use `++` to create cute one-liners. Code like this is hard to maintain.
 
 `x ++` ==> `x += 1` is better.
 
----
-
-**Performance**
+### Code Written for Performance
 
 - Performance specific code is usually crufty (overly-complex; poorly built; unpleasant).
 - Clean code is easier to reason about.
 - "Premature optimisation is the root of all evil" -- Donald Knuth
 - Most code has negligible impact on performance. Only optimise that which is taking time.
 - Algorithm replacement is vastly more effective than code fiddling.
-
----
 
 Programming is the most complicated thing that humans do.
 
@@ -134,11 +182,11 @@ If everyone follows a programming style, we improve inter-operability.
 
 Bugs are inevitable. Your goals is to do what you can to write less of them.
 
----
+## And Then There Was JavaScript
+
+### History of JavaScript
 
 Netscape wanted a language for their browser, Navigator. That produced **LiveScript**, inspired by Java, Scheme and Self (without classes).
-
-**Origin of JavaScript:**
 
 Sun wanted to be free from Microsoft, so they designed Java to target the Java Virtual Machine, rather than the OS.
 
@@ -164,7 +212,7 @@ Where do Bad Parts come from?
 
 Fortunately, for the most part we can ignore the bad parts. The ones we can't are dangerous. 
 
----
+### Objects
 
 JS is OO, but in JS an object `{}` is a dynamic collection of properties. This is a `dict` in Python, for example.
 
@@ -200,7 +248,7 @@ undefined
 { b: 4, a: 2, c: 9 }
 ```
 
----
+### Numbers
 
 Everything in JS is an **Object**.
 
@@ -241,7 +289,7 @@ We also have the `Math` object:
 
 `isNaN(NaN) is true`
 
----
+### Booleans and Strings
 
 **Why is String called String? **- No one really knows! Can't find an origin in the literature.
 
@@ -254,9 +302,7 @@ Strings have loads of methods.
 
 https://frontendmasters.com/courses/good-parts-javascript-web/arrays/
 
----
-
-**Arrays**
+### Arrays
 
 Array inherits from Object (pure array type doesn't exist)
 
@@ -298,7 +344,7 @@ true
 - objects when names are arbitrary strings: `o['foo']`
 - arrays when names are sequential integers: `a[0]` 
 
----
+### Dates, RegEx & Types
 
 RegEx is hard to decipher. 
 
@@ -322,7 +368,7 @@ And, you save a lot of time working against the type system!
 
 ^ DC is against strong typing in JS.
 
----
+### JavaScript Syntax
 
 JS syntactically similar to C
 
@@ -330,11 +376,13 @@ JS syntactically similar to C
 
 `+"42" = 42` - coerces str to number
 
----
+### Statements
 
 `For` largely replaced by `map` and `ForEach`
 
----
+## Function the Ultimate
+
+### Funtions
 
 All you need is Functions in JS. They make up a lot of the good parts!
 
@@ -359,7 +407,7 @@ Recursion supported by JS
 
 --> seen in quick sort
 
----
+### Closure
 
 **Closure** aka Lexical Scoping/Static Scoping
 
@@ -392,11 +440,15 @@ https://frontendmasters.com/courses/good-parts-javascript-web/pseudoclassical-in
 
 ---
 
-**Skipping section on Pseudoclassical Inheritance, Functional Inheritance, Constructors**
+**Skipping sections on Pseudoclassical Inheritance, Functional Inheritance, Constructors**
 
 https://www.w3schools.com/js/js_object_constructors.asp
 
 ---
+
+### The Metamorphosis of Ajax
+
+### The History of HTML
 
 **Ajax - Asynchronous JS and XML** - https://www.youtube.com/watch?v=RDo3hBL1rfA
 
@@ -420,7 +472,7 @@ Inspired by Scribe:
 
 ![image-20201204122711489](img/image-20201204122711489.png)
 
----
+### How JavaScript Saved HTML
 
 **HTML** was intended for document viewers originally. It wasn't well suited to the web. We used it anyway.
 
@@ -457,9 +509,7 @@ The **DOM** - "one of the worst APIs ever invented"
 - It is what most people hate when they say they hate JS
 - The browser's API
 
----
-
-**The Browser**
+### The Browser
 
 ![image-20201204143537567](img/image-20201204143537567.png)
 
@@ -467,7 +517,7 @@ The **DOM** - "one of the worst APIs ever invented"
 
 Mozilla was better than Mosaic at handling images, so it became popular.
 
----
+### The Script Tag
 
 Where do you put JavaScript in a text format?
 
@@ -486,9 +536,7 @@ Where do you put JavaScript in a text format?
 - minify and gzip script files
 - reduce number of script files as much as possible
 
----
-
-**Document Tree Structure**
+### Document Tree Structure
 
 ![image-20201204145746401](img/image-20201204145746401.png)
 
@@ -496,9 +544,7 @@ DOM still uses uppercase (old HTML convention)
 
 `document` is a global variable in the browser
 
----
-
-**Retrieving Nodes**
+### Retrieving Nodes
 
 `document.getElementById(id)`
 
@@ -531,9 +577,7 @@ CSS `-` minus signs are intepreted as `minus`, so that was a bad call. DOM could
 
 Don't mess with the DOM, write good HTML. 
 
----
-
-**Events**
+### Events
 
 - The browser has an event-driven, signle-threaded programming model
 - Events are targeted to particular nodes
@@ -559,17 +603,13 @@ Bubbling - start at the target, then move to its parent, and so on, until the ev
 
 **WC3 decided to allow both ways**
 
----
-
-**Performance**
+### DOM Performance
 
 In most applications, JS has a small cost. Everything else: touching a node; styling; reflow; repaint; and random things like nodelist can have a big cost.
 
 **Performance Tools**
 
 - Speed Tracer for Chrome
-
----
 
 A small amount of JS makes the DOM (one of the world's worst APIs) into something pleasant and productive. 
 
@@ -584,9 +624,7 @@ JS libs:
 
 Ajax, JQuery, etc...
 
----
-
-**Division of Labour**
+### Division of Labour
 
 How to split the work between the server and the client?
 
@@ -599,11 +637,13 @@ Solution: Seek the Middle Way
 - A pleasant dialogue between specialised peers
 - Minimise the volume of traffic
 
----
+## ES5: The New Parts
+
+### New Syntax
 
 ![image-20201207121520674](img/image-20201207121520674.png)
 
----
+### New Methods
 
 JS is open (exposed) because its creator expected people down the line would need to patch it ==> poly-filling, monkey-patching.
 
@@ -613,7 +653,7 @@ JS is open (exposed) because its creator expected people down the line would nee
 
 ---
 
-**Strict Mode**
+### Strict Mode
 
 Introduced in ES5
 
@@ -627,7 +667,9 @@ Introduced in ES5
 
 ---
 
-**The History of Security**
+## Principles of Security
+
+### The History of Security
 
 *White hats vs black hats*
 
@@ -639,7 +681,7 @@ Security is a massive topic. Too much to cover if you have a day job.
 
 Deterrence is not effective - you can't punish an invisible attacker. Prevention is the only effective mechanism.
 
----
+### Cryptography
 
 **Auguste Kerckhoffs**
 
@@ -658,8 +700,6 @@ The machine is Open. Everyone can see how it works.
 There is no security in obscurity.
 
 Just worry about keeping the 'keys' safe, which is hard enough!
-
----
 
 One Time Pad - the only truly unbreakable (unbruteforceable) system
 
@@ -687,9 +727,7 @@ Characters we like to use in thinking about cryptography:
 
 Red flag : "We'll go back and make it secure later" - Security is hard to retrofit
 
----
-
-**Security and the Browser**
+### Security and the Browser
 
 - horribly insecure
 - still "fixing it later"
@@ -725,11 +763,11 @@ The browser does not prevent any of these.
 
 Web standards require these weaknesses.
 
----
+### Cross Site Scripting
 
 ^ This is called **XSS** (CSS was taken)
 
-Suggests there's something wrong with **Cross Side Scripting**, but that's wrong! We want sites to communicate with each other.
+Suggests there's something wrong with **Cross Site Scripting**, but that's wrong! We want sites to communicate with each other.
 
 Also, you don't need a second site to do XSS, so the name is just wrong.
 
@@ -762,7 +800,7 @@ HTML - no hope
 
 It's up to devs to create secure applications on an insecure platform
 
----
+### Object Capabilities
 
 The Principle of Least Authority: Any unit of software should be given just the *capabilities* it needs to do its work, and no more.
 
@@ -784,9 +822,7 @@ With great complexity comes great confusion. Keep it simple. Keep it clean.
 - Strict conformance to good style rules.
 - Use a Linter 
 
----
-
-**A Simple Attack**
+### A Simple Attack
 
 user clicks on: `http://yoursite.com/<script>...</script>`
 
@@ -805,9 +841,9 @@ user clicks on: `http://yoursite.com/<script>...</script>`
 - the script runs with the authority of your site
 - the script gets cookies, local storage, everything
 
----
+## Managing Asynschronicity
 
-**Synchronous Functions**
+### Synchronous Functions
 
 - does not return until the work is complete, or something fails --> easy to reason about its behaviour over time
 
@@ -842,9 +878,7 @@ Allow one thread to perform critical stuff in memory at a time. All other thread
 
 If threads don't interact, they can run individually across available cores.
 
----
-
-**Asynchronous Functions**
+### Asynchronous Functions
 
 Returns immediately
 
@@ -871,7 +905,7 @@ Used in **Turn** Systems
 | Very low overhead                                            | Programs are inside out!  |
 | Resilient. If a turn fails, the program can still go on. Just open a debugger and go surf the web. |                           |
 
----
+### JavaScript on the Server
 
 **JS is moving to the server** after having already conquered the browser.
 
@@ -881,7 +915,7 @@ What servers do is quite different from what browsers do.
 
 - implements a web server is a JS event loop
 
----
+### Functional Programming
 
 **Functional Programming** to the rescue.
 
